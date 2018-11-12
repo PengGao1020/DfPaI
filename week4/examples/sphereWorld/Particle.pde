@@ -4,7 +4,7 @@ class Particle {
   PVector amts;
   String name;
   
-  Particle(String name, float radius, float speed) {
+  Particle(float radius, float speed) {
     this.name = name;
     angle = random(0, TWO_PI);
     this.radius = radius;
