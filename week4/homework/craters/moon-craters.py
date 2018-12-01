@@ -22,19 +22,32 @@ def get_coords(url):
 
     return coords
 
+def get_dia(url):
+   res = requests.get(url)
+
+   tree = etree.fromstring(res.text, parser)
+   dia = tree.xpath('//tbody/tr/td[3]/text()')
+   return dia
 
 all_coords = []
+all_dia = []
+
 for url in urls:
-    coords = get_coords(url)
-    all_coords += coords
-    #  ^ this is the same as all_coords.extend(coords)
+   coords = get_coords(url)
+   all_coords += coords
+   dia = get_dia(url)
+   all_dia += dia
 
-    print('added {} coords'.format(len(coords)))
+   print('added {} coords'.format(len(coords)))
+   print('added {} dia'.format(len(dia)))
 
-print('total of {}'.format(len(all_coords)))
+print('total of {} coords and {} dia'.format(len(all_coords),len(all_dia)))
 
+i=0
 with open('moon_crater_coords.csv', 'w') as f:
-    f.write('lat,lon\n')
-    for coord in all_coords:
-        lat, lon = coord.split('; ')
-        f.write('{},{}\n'.format(lat, lon))
+   f.write('lat,lon,dia\n')
+   for coord in all_coords:
+       lat, lon = coord.split('; ')
+       dia = all_dia[i]
+       f.write('{},{},{}\n'.format(lat, lon, dia))
+       i+=1
