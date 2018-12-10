@@ -2,9 +2,12 @@ import controlP5.*;
 
 ControlP5 cp5;
 
+// RGB values for background color
 int backgroundR=100;
 int backgroundG=100;
 int backgroundB=100;
+
+// size and position of circle
 float radius=120;
 int positionX;
 int positionY;
@@ -14,13 +17,15 @@ void setup() {
 
   cp5 = new ControlP5(this);
 
+  // Alt+mouse drag to move a slider or a group
   cp5.enableShortcuts();
 
+  // controller color setting
   cp5.setColorBackground(color(102, 131, 213));
   cp5.setColorForeground(color(89, 148, 74));
   cp5.setColorActive(color(89, 148, 74));
 
-
+  // controller for the size of circle
   cp5.addSlider("radius")
     .setPosition(20, 60)
     .setSize(150, 10)
@@ -29,9 +34,11 @@ void setup() {
     .setColorLabel(color(200, 100, 155))
     ;
 
+  // move labels under the slider
   cp5.getController("radius").getCaptionLabel().align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
   cp5.getController("radius").getValueLabel().align(ControlP5.RIGHT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
 
+  // sliders for background color
   cp5.addSlider("backgroundR")
     .setPosition(20, 20)
     .setSize(100, 10)
@@ -53,7 +60,7 @@ void setup() {
     .setCaptionLabel("B")
     ;
 
-
+  // set up group for circle position
   Group g1 = cp5.addGroup("position")
     .setPosition(20, 100)
     .setWidth(150)
@@ -64,6 +71,7 @@ void setup() {
     .hideArrow()
     ;
 
+  // add position controller into the group
   cp5.addSlider("positionX")
     .setPosition(0, 0)
     .setSize(150, 10)
@@ -84,10 +92,12 @@ void setup() {
 }
 
 void draw() {
+
+  // draw background and circle with values from controllers
   background(backgroundR, backgroundG, backgroundB);
 
   ellipse(positionX, positionY, radius*2, radius*2);
-  
+
   String tip="Hold Alt to drag the controller.";
-  text(tip,20,480);
+  text(tip, 20, 480);
 }

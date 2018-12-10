@@ -4,16 +4,17 @@ int gap=10;
 int u=r+gap;
 
 void setup() {
-  size(500, 500);
+  size(1000, 1000);
   gridNum=width/2/u;
 }
 
-// sorry for the endless drawing, just trying to get more familiar with coordinate.
-
+//set up grid of position to draw "emojis"
 void draw() {
   background(255);
   for (int i=0; i<gridNum; i++) {
     for (int j=0; j<gridNum; j++) {
+      // draw jokers on the boundaries
+      // and deadpool inside, open and close eyes arranged alternately
       if (i==0||j==0||i==gridNum-1||j==gridNum-1) {
         joker(i*2*u+u, j*2*u+u);
       } else if ((i%2==0 && j%2==0)||(i%2==1 && j%2==1)) {
@@ -25,6 +26,9 @@ void draw() {
   }
 }
 
+// sorry for the endless drawing, just trying to get more familiar with coordinate.
+
+// draw open eye deadpool on a giving position
 void deadPoolA(int x, int y) {
   int centerX=x;
   int centerY=y;
@@ -54,7 +58,7 @@ void deadPoolA(int x, int y) {
   ellipse(centerX+r/2, centerY-r/30, 4*r/9, 2*r/3);
 }
 
-
+// draw close eye deadpool on a giving position
 void deadPoolB(int x, int y) {
   int centerX=x;
   int centerY=y;
@@ -84,6 +88,7 @@ void deadPoolB(int x, int y) {
   triangle(centerX+r/4, centerY+r/5, centerX+5*r/8, centerY+r/8, centerX+7*r/9, centerY-r/6);
 }
 
+// draw joker on a giving position
 void joker(int x, int y) {
   int centerX=x;
   int centerY=y;
@@ -96,7 +101,6 @@ void joker(int x, int y) {
   ellipse(centerX, centerY, 17*r/8, 17*r/8);
   fill(240, 240, 220);
   ellipse(centerX, centerY, 2*r, 2*r);
-
 
   mouth(centerX, centerY);
 
@@ -114,6 +118,7 @@ void joker(int x, int y) {
   popMatrix();
 }
 
+// draw mouth for joker
 void mouth(int x, int y) {
   int centerX=x;
   int centerY=y;
@@ -128,7 +133,7 @@ void mouth(int x, int y) {
   arc(centerX, centerY, 11*r/6, r, PI/10, 9*PI/10, OPEN);
 }
 
-
+// draw eyes for joker
 void eye() {
   fill(0, 0, 150);
   ellipse(0, 0, r/2, r);
@@ -138,6 +143,7 @@ void eye() {
   ellipse(0, 0, r/8, r/2);
 }
 
+// draw hair for joker
 void hair(int x, int y) {
   int centerX=x;
   int centerY=y;

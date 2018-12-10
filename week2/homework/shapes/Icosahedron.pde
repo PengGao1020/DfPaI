@@ -3,10 +3,12 @@ class Icosahedron {
   float halfLen;
   float halfInterLen;
 
+  // using len from main function as the length of every side of the icosahedron
   Icosahedron(float len) {
     halfLen=len/2;
     halfInterLen=len*(1+sqrt(5))/4;
 
+     // set all of the vertexes for the icosahedron
     PVector vertex1=new PVector (-halfLen, halfInterLen, 0);
     PVector vertex2=new PVector (halfLen, halfInterLen, 0);
     PVector vertex3=PVector.mult(vertex1, -1);
@@ -20,6 +22,7 @@ class Icosahedron {
     PVector vertex11=PVector.mult(vertex9, -1);
     PVector vertex12=PVector.mult(vertex10, -1);
 
+    // save each side of the icosahedron into an array of Line
     sides.add(new Line(vertex1, vertex2));
     sides.add(new Line(vertex1, vertex7));
     sides.add(new Line(vertex1, vertex8));
@@ -53,6 +56,7 @@ class Icosahedron {
 
   }
 
+  // call the draw function in Line class for every side of the icosahedron
   void draw() {
     for (Line s : sides) {
       s.draw();

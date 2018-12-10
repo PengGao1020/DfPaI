@@ -14,36 +14,35 @@ urls = [
 
 parser = etree.HTMLParser()
 
-def get_coords(url):
+# function that get coordinates and diameters from the urls link
+def get_data(url):
     res = requests.get(url)
-
     tree = etree.fromstring(res.text, parser)
     coords = tree.xpath('//span[@class="geo"]/text()')
+    dia = tree.xpath('//tbody/tr/td[3]/text()')
+    return coords,dia
 
-    return coords
-
-def get_dia(url):
-   res = requests.get(url)
-
-   tree = etree.fromstring(res.text, parser)
-   dia = tree.xpath('//tbody/tr/td[3]/text()')
-   return dia
-
+# make two lists for different data
 all_coords = []
 all_dia = []
 
+# run every url link with get_data function and add data into the lists
 for url in urls:
-   coords = get_coords(url)
+   coords,dia= get_data(url)
    all_coords += coords
-   dia = get_dia(url)
    all_dia += dia
 
+# print how many data has been added
    print('added {} coords'.format(len(coords)))
    print('added {} dia'.format(len(dia)))
 
+# print the final size of the lists
 print('total of {} coords and {} dia'.format(len(all_coords),len(all_dia)))
 
+# set a initial number to call data from second list inside the for loop of first list
 i=0
+
+# write data into a csv file with three columns
 with open('moon_crater_coords.csv', 'w') as f:
    f.write('lat,lon,dia\n')
    for coord in all_coords:

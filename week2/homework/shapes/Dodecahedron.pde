@@ -4,11 +4,13 @@ class Dodecahedron {
   float halfInterL;
   float halfInterS;
 
+  // using len from main function as the length of every side of the dodecahedron
   Dodecahedron(float len) {
     halfLen=len/2;
     halfInterL=len*(1+sqrt(5))/4;
     halfInterS=len/(1+sqrt(5));
 
+     // set all of the vertexes for the dodecahedron
     PVector vertex1=new PVector (0, halfInterL, halfInterS);
     PVector vertex2=new PVector (0, halfInterL, -halfInterS);
     PVector vertex3=PVector.mult(vertex1, -1);
@@ -30,6 +32,7 @@ class Dodecahedron {
     PVector vertex19=PVector.mult(vertex13, -1);
     PVector vertex20=PVector.mult(vertex14, -1);
 
+    // save each side of the dodecahedron into an array of Line
     sides.add(new Line(vertex1, vertex2));
     sides.add(new Line(vertex1, vertex13));
     sides.add(new Line(vertex1, vertex16));
@@ -63,6 +66,7 @@ class Dodecahedron {
 
   }
 
+  // call the draw function in Line class for every side of the dodecahedron
   void draw() {
     for (Line s : sides) {
       s.draw();
