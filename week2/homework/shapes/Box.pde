@@ -4,7 +4,7 @@ class Box {
   
   // set the initial location and moving speed of the box on a line
   Box() {
-    amt=random(1);
+    amt=random(1); // 0 to 1 as begin point to the end point
     vel=random(0.001,0.01);
   }
 
@@ -15,7 +15,7 @@ class Box {
     float z=lerp(begin.z, end.z, amt);
     loc=new PVector(x,y,z);
     amt+=vel;
-    amt=amt%1;
+    amt=amt%1; // to make sure it always on the line
   }
 
   // draw boxes on the location from moving function

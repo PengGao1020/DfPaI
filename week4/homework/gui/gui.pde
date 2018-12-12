@@ -98,6 +98,7 @@ void draw() {
 
   ellipse(positionX, positionY, radius*2, radius*2);
 
+  // notes of how to move the controllers
   String tip="Hold Alt to drag the controller.";
   text(tip, 20, 480);
 }

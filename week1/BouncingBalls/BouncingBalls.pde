@@ -1,6 +1,6 @@
 Ball[] balls;
-int ballNum=12;
-float maxVel=6;
+int ballNum=12; // set number of balls 
+float maxVel=6; // set the maxium moving speed for each ball
 
 void setup() {
   size(500, 500);

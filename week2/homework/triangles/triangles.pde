@@ -4,14 +4,14 @@ class Triangle {
   float rotation;
 
   Triangle(float x, float y) {
-    pos = new PVector(x, y);
+    pos = new PVector(x, y); // location of each triangle, getting values from main function
     rotation = 0;
   }
 
   void draw() {
     stroke(220, 0, 180);
 
-    // draw triangles on the postions that have been passed from the main function
+    // draw triangles on the postions
     pushMatrix();
     translate(pos.x, pos.y);
     // set rotation based on the faceTowards function

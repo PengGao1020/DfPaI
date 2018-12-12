@@ -1,6 +1,6 @@
 class Line {
   PVector begin, end;
-  int boxNum=20;
+  int boxNum=20; // number of boxes on each line
   Box[] boxes=new Box[boxNum];
   
   // set beginning and ending points for a line, passed in from upper classes

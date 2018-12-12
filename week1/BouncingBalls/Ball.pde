@@ -2,7 +2,8 @@ class Ball {
   PVector pos, vel;
   float radius, maxVel;
   color col;
-
+  
+  // getting values from the main function and use them to create balls 
   Ball(float x, float y, float radius, float max) {
     pos = new PVector(x, y);
     vel = new PVector(random(-3, 3), random(-3, 3));

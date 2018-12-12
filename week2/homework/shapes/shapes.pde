@@ -1,7 +1,8 @@
-float edge=500;
-float angle=0;
-float rotation=PI/180;
+float edge=500; // side length of polyhedrons
+float angle=0; // initial angle of rotation
+float rotation=PI/180; // rotating rate
 
+// polyhedron classes
 Cube cub=new Cube(edge);
 Octahedron oct=new Octahedron(edge);
 Icosahedron ico=new Icosahedron(edge);

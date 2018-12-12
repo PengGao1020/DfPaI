@@ -1,7 +1,7 @@
 
 size(1000, 1000);
 
-loadPixels();
+loadPixels(); // load pixel array to work with
 
 // use two for loops to transfer the linear pixel array into 2D grid
 for (int x=0; x<width; x++) {

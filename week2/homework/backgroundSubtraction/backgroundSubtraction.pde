@@ -1,8 +1,8 @@
 import processing.video.*;
 
-PImage background;
-PImage replace;
-Capture capture;
+PImage background; // background image to compare with
+PImage replace; // image to replace background
+Capture capture; // capture image from camera
 
 // set threshold of difference between captured image from camera
 float threshold=15;
@@ -18,15 +18,15 @@ void setup() {
 
 void draw() {
 
+  // check the status of camera, only run the code when it available
   if (capture.available()) {
     capture.read();
 
-    // when camera is running and background is captured start the comparision
+    // when background is saved (keypressed) start the comparision
     if (background != null) {
 
       loadPixels();
 
-      // set the pixels here!
       capture.loadPixels();
       background.loadPixels();
 

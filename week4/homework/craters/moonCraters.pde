@@ -25,6 +25,7 @@ class MoonCraters {
     // rotate the circle facing the center of moon
     rotateZ(HALF_PI-lon);
     rotateY(HALF_PI-lat);
+    // want to use box to replace circles, uncommend box()
     //box(20);
     ellipse(0, 0, dia, dia);
     popMatrix();

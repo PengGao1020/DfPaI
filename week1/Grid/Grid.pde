@@ -1,16 +1,17 @@
-int r=40;
+int r=40; // radius of the emojis
 int gridNum;
 int gap=10;
-int u=r+gap;
+int u=r+gap; // radius plus gap between each emoji
 
 void setup() {
   size(1000, 1000);
-  gridNum=width/2/u;
+  gridNum=width/2/u; // full size of a emoji is 2*u, so number of the grid is width/2/u
 }
 
-//set up grid of position to draw "emojis"
+
 void draw() {
   background(255);
+  //set up grid of position to draw "emojis"
   for (int i=0; i<gridNum; i++) {
     for (int j=0; j<gridNum; j++) {
       // draw jokers on the boundaries

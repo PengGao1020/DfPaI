@@ -1,7 +1,7 @@
 import requests
 from lxml import etree
-import time
 
+# urls for data
 urls = [
     'https://en.wikipedia.org/wiki/List_of_craters_on_the_Moon:_A%E2%80%93B',
     'https://en.wikipedia.org/wiki/List_of_craters_on_the_Moon:_C%E2%80%93F',
@@ -18,8 +18,8 @@ parser = etree.HTMLParser()
 def get_data(url):
     res = requests.get(url)
     tree = etree.fromstring(res.text, parser)
-    coords = tree.xpath('//span[@class="geo"]/text()')
-    dia = tree.xpath('//tbody/tr/td[3]/text()')
+    coords = tree.xpath('//span[@class="geo"]/text()') # coordinates of craters
+    dia = tree.xpath('//tbody/tr/td[3]/text()') # diameters of craters
     return coords,dia
 
 # make two lists for different data
@@ -49,4 +49,4 @@ with open('moon_crater_coords.csv', 'w') as f:
        lat, lon = coord.split('; ')
        dia = all_dia[i]
        f.write('{},{},{}\n'.format(lat, lon, dia))
-       i+=1
+       i+=1 # so the dia list will keep moving down as for loop runs
